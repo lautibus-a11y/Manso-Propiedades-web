@@ -578,12 +578,12 @@
             width: 0%;
         }
 
-        .mobile-nosotros-images { display: none; }
+        .nosotros-images.mobile-only { display: none; }
         @media (max-width: 900px) {
             .nosotros-grid { grid-template-columns: 1fr; display: flex; flex-direction: column; }
             .nosotros-images.desktop-only { display: none; }
-            .mobile-nosotros-images { 
-                display: block; position: relative; height: 380px; width: 100%; margin: 2rem 0; 
+            .nosotros-images.mobile-only { 
+                display: block; position: relative; height: 420px; max-width: 520px; width: 100%; margin: 2rem 0; 
             }
         }
 
@@ -1395,12 +1395,12 @@
                         <span class="eyebrow" data-reveal>Quiénes somos</span>
                         <h2 class="heading-2" data-reveal>Redefiniendo el mercado <em class="text-accent">inmobiliario.</em></h2>
 
-                        <div class="mobile-nosotros-images">
-                            <div class="img-main-wrapper" style="width: 75%; height: 85%; position: absolute; left: 0; top: 0; overflow: hidden; border-radius: var(--radius); z-index: 1;">
-                                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Oficina Manso Propiedades" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                        <div class="nosotros-images mobile-only">
+                            <div class="img-main-wrapper" data-clip>
+                                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Oficina Manso Propiedades" class="parallax-img" data-parallax loading="lazy">
                             </div>
-                            <div class="img-sec-wrapper" style="width: 55%; height: 60%; position: absolute; right: 0; bottom: 0; z-index: 2; border: 8px solid var(--c-bg); border-radius: var(--radius); overflow: hidden;">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Agente inmobiliario" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                            <div class="img-sec-wrapper" data-clip>
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Agente inmobiliario" class="parallax-img" data-parallax loading="lazy">
                             </div>
                         </div>
 
