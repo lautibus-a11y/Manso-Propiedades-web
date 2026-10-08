@@ -579,8 +579,9 @@
         }
 
         @media (max-width: 900px) {
-            .nosotros-grid { grid-template-columns: 1fr; }
-            .nosotros-images { height: 420px; max-width: 520px; }
+            .nosotros-grid { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+            .nosotros-images { height: 420px; max-width: 520px; order: 2; width: 100%; margin-top: 2rem; }
+            .nosotros-content { order: 1; }
         }
 
         /* ============ SERVICIOS ============ */
@@ -615,7 +616,7 @@
             transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
-        .service-card:hover .service-card-inner, .service-card:focus-within .service-card-inner {
+        .service-card:hover .service-card-inner, .service-card:focus-within .service-card-inner, .service-card.flip-active .service-card-inner {
             transform: rotateY(180deg);
         }
         .service-card-front, .service-card-back {
@@ -904,6 +905,8 @@
         
         @media (max-width: 768px) {
             .cta-content h2 { margin-bottom: 4rem; }
+            .cta-buttons { flex-direction: column; width: 100%; }
+            .cta-buttons .btn { width: 100%; justify-content: center; padding-top: 18px; padding-bottom: 18px; }
         }
 
         /* ============ EQUIPO ============ */
@@ -2173,6 +2176,23 @@
         a.target = '_blank';
         a.rel = 'noopener';
     });
+
+    /* ---------- Flip Box Mobile Scroll Fix ---------- */
+    if (window.matchMedia('(max-width: 900px)').matches) {
+        const flipObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('flip-active');
+                } else {
+                    entry.target.classList.remove('flip-active');
+                }
+            });
+        }, { threshold: 0.6 });
+        
+        document.querySelectorAll('.service-card').forEach(card => {
+            flipObserver.observe(card);
+        });
+    }
     </script>
 </body>
 </html>
