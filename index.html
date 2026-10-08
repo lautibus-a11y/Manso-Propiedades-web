@@ -578,10 +578,13 @@
             width: 0%;
         }
 
+        .mobile-nosotros-images { display: none; }
         @media (max-width: 900px) {
             .nosotros-grid { grid-template-columns: 1fr; display: flex; flex-direction: column; }
-            .nosotros-images { height: 420px; max-width: 520px; order: 2; width: 100%; margin-top: 2rem; }
-            .nosotros-content { order: 1; }
+            .nosotros-images.desktop-only { display: none; }
+            .mobile-nosotros-images { 
+                display: block; position: relative; height: 380px; width: 100%; margin: 2rem 0; 
+            }
         }
 
         /* ============ SERVICIOS ============ */
@@ -632,6 +635,18 @@
             background-color: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.1);
         }
+        
+        .mobile-tap-hint { display: none; }
+        @media (max-width: 900px) {
+            .mobile-tap-hint {
+                display: flex; align-items: center; gap: 6px;
+                position: absolute; bottom: 20px; left: 20px;
+                color: rgba(255,255,255,0.5); font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            .mobile-tap-hint svg { width: 14px; height: 14px; }
+        }
+
         .service-card-back {
             background-color: var(--c-white);
             transform: rotateY(180deg);
@@ -1367,7 +1382,7 @@
         <section id="nosotros" class="nosotros-section">
             <div class="container">
                 <div class="nosotros-grid">
-                    <div class="nosotros-images">
+                    <div class="nosotros-images desktop-only">
                         <div class="img-main-wrapper" data-clip>
                             <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Oficina Manso Propiedades" class="parallax-img" data-parallax loading="lazy">
                         </div>
@@ -1378,6 +1393,16 @@
                     <div class="nosotros-content">
                         <span class="eyebrow" data-reveal>Quiénes somos</span>
                         <h2 class="heading-2" data-reveal>Redefiniendo el mercado <em class="text-accent">inmobiliario.</em></h2>
+
+                        <div class="mobile-nosotros-images">
+                            <div class="img-main-wrapper" style="width: 75%; height: 85%; position: absolute; left: 0; top: 0; overflow: hidden; border-radius: var(--radius); z-index: 1;">
+                                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Oficina Manso Propiedades" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                            </div>
+                            <div class="img-sec-wrapper" style="width: 55%; height: 60%; position: absolute; right: 0; bottom: 0; z-index: 2; border: 8px solid var(--c-bg); border-radius: var(--radius); overflow: hidden;">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Agente inmobiliario" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                            </div>
+                        </div>
+
                         <p data-reveal>No somos simplemente agentes, somos asesores estratégicos. En Manso Propiedades combinamos tecnología, diseño y un conocimiento profundo del mercado para ofrecer una experiencia sin fricciones.</p>
                         <p data-reveal>Entendemos que cada propiedad tiene una historia y cada cliente una visión única. Nuestro objetivo es conectar ambas con precisión y elegancia.</p>
 
@@ -1419,6 +1444,9 @@
                     <div class="service-card js-modal-trigger" data-modal="venta" tabindex="0" role="button" aria-label="Conocer más sobre Venta">
                         <div class="service-card-inner">
                             <div class="service-card-front">
+                                <div class="mobile-tap-hint">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5L11 14v-6a2 2 0 10-4 0v9.5c0 1.5 1 3.5 3 4.5h4c2.5 0 4-2 4-4v-4.5c0-1.5-1-2.5-2.5-2.5s-2.5 1-2.5 2.5v3z"/></svg> <span>Tocar para ver</span>
+                                </div>
                                 <span class="service-num">01</span>
                                 <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
                                 <h3 class="service-title">Venta</h3>
@@ -1432,6 +1460,9 @@
                     <div class="service-card js-modal-trigger" data-modal="alquiler" tabindex="0" role="button" aria-label="Conocer más sobre Alquiler">
                         <div class="service-card-inner">
                             <div class="service-card-front">
+                                <div class="mobile-tap-hint">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5L11 14v-6a2 2 0 10-4 0v9.5c0 1.5 1 3.5 3 4.5h4c2.5 0 4-2 4-4v-4.5c0-1.5-1-2.5-2.5-2.5s-2.5 1-2.5 2.5v3z"/></svg> <span>Tocar para ver</span>
+                                </div>
                                 <span class="service-num">02</span>
                                 <svg class="service-icon" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                                 <h3 class="service-title">Alquiler</h3>
@@ -1445,6 +1476,9 @@
                     <div class="service-card js-modal-trigger" data-modal="tasaciones" tabindex="0" role="button" aria-label="Conocer más sobre Tasaciones">
                         <div class="service-card-inner">
                             <div class="service-card-front">
+                                <div class="mobile-tap-hint">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5L11 14v-6a2 2 0 10-4 0v9.5c0 1.5 1 3.5 3 4.5h4c2.5 0 4-2 4-4v-4.5c0-1.5-1-2.5-2.5-2.5s-2.5 1-2.5 2.5v3z"/></svg> <span>Tocar para ver</span>
+                                </div>
                                 <span class="service-num">03</span>
                                 <svg class="service-icon" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
                                 <h3 class="service-title">Tasaciones</h3>
@@ -1458,6 +1492,9 @@
                     <div class="service-card js-modal-trigger" data-modal="administracion" tabindex="0" role="button" aria-label="Conocer más sobre Administración">
                         <div class="service-card-inner">
                             <div class="service-card-front">
+                                <div class="mobile-tap-hint">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5L11 14v-6a2 2 0 10-4 0v9.5c0 1.5 1 3.5 3 4.5h4c2.5 0 4-2 4-4v-4.5c0-1.5-1-2.5-2.5-2.5s-2.5 1-2.5 2.5v3z"/></svg> <span>Tocar para ver</span>
+                                </div>
                                 <span class="service-num">04</span>
                                 <svg class="service-icon" viewBox="0 0 24 24"><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
                                 <h3 class="service-title">Administración</h3>
@@ -2027,7 +2064,16 @@
             card.addEventListener('mouseleave', () => {
                 gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.8, ease: 'power3.out' });
             });
-            card.addEventListener('click', () => openModal(card.dataset.modal));
+            card.addEventListener('click', (e) => {
+                if (window.matchMedia('(max-width: 900px)').matches) {
+                    if (!card.classList.contains('flip-active')) {
+                        document.querySelectorAll('.service-card').forEach(c => c.classList.remove('flip-active'));
+                        card.classList.add('flip-active');
+                        return;
+                    }
+                }
+                openModal(card.dataset.modal);
+            });
             card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.modal); } });
         });
     }
@@ -2177,22 +2223,6 @@
         a.rel = 'noopener';
     });
 
-    /* ---------- Flip Box Mobile Scroll Fix ---------- */
-    if (window.matchMedia('(max-width: 900px)').matches) {
-        const flipObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('flip-active');
-                } else {
-                    entry.target.classList.remove('flip-active');
-                }
-            });
-        }, { threshold: 0.6 });
-        
-        document.querySelectorAll('.service-card').forEach(card => {
-            flipObserver.observe(card);
-        });
-    }
     </script>
 </body>
 </html>

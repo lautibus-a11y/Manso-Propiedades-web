@@ -322,7 +322,7 @@
     <main class="product-section">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" class="btn-back">← Volver</a>
+                <a href="index.html#catalogo" onclick="if(document.referrer.includes('index.html')) { window.history.back(); return false; }" class="btn-back">← Volver</a>
                 <span><a href="index.html">Inicio</a> / <a href="index.html#catalogo">Venta</a> / Residencia Puerto Madero</span>
             </div>
 
